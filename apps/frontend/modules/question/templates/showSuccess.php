@@ -11,6 +11,7 @@
 <h2><?php echo $question->getTitle() ?></h2>
  
 <div class="question_body">
+  <div>asked by <?php echo link_to($question->getUser(), 'user/show?id='.$question->getUser()->getId()) ?> on <?php echo format_date($question->getCreatedAt(), 'f') ?></div>
   <?php echo $question->getBody() ?>
 </div>
  

@@ -25,4 +25,9 @@ class questionActions extends sfActions
  
       $this->forward404Unless($this->question);
   }
+
+  public function executeRecent()
+  {
+    $this->question_pager = QuestionPeer::getRecentPager( $this->getRequestParameter( 'page', 1 ) );
+  }
 }

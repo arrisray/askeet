@@ -24,12 +24,6 @@ class userActions extends sfActions
     $this->users = UserPeer::doSelect(new Criteria());
   }
 
-  public function executeShow()
-  {
-    $this->user = UserPeer::retrieveByPk($this->getRequestParameter('id'));
-    $this->forward404Unless($this->user);
-  }
-
   public function executeCreate()
   {
     $this->user = new User();
@@ -102,6 +96,16 @@ class userActions extends sfActions
   public function handleErrorLogin()
   {
       return sfView::SUCCESS;
+  }
+
+  public function executeShow()
+  {
+    $this->subscriber = UserPeer::retrieveByPk($this->getRequestParameter('id', $this->getUser()->getSubscriberId()));
+    $this->forward404Unless($this->subscriber);
+   
+    $this->interests = $this->subscriber->getInterestsJoinQuestion();
+    $this->answers   = $this->subscriber->getAnswersJoinQuestion();
+    $this->questions = $this->subscriber->getQuestions();
   }
 }
 
