@@ -1,7 +1,19 @@
 # default rules
+popular_questions: 
+  url:   /index/:page 
+  param: { module: question, action: list } 
+
+login: 
+  url:   /login 
+  param: { module: user, action: login } 
+
+question:
+  url:   /question/:stripped_title
+  param: { module: question, action: show }
+
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: question, action: list }
 
 default_symfony:
   url:   /symfony/:action/*
