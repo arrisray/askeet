@@ -2,7 +2,7 @@
 
 <?php foreach($question_pager->getResults() as $question): ?>
   <div class="question">
-    <div class="interested_block">
+    <div class="interested_block" id="block_<?php echo $question->getId() ?>">
       <?php include_partial( 'interested_user', array('question' => $question) ) ?>
     </div>
  

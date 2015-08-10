@@ -107,5 +107,18 @@ class userActions extends sfActions
     $this->answers   = $this->subscriber->getAnswersJoinQuestion();
     $this->questions = $this->subscriber->getQuestions();
   }
+
+  public function executeInterested()
+  {
+    $this->question = QuestionPeer::retrieveByPk($this->getRequestParameter('id'));
+    $this->forward404Unless($this->question);
+   
+    $user = $this->getUser()->getSubscriber();
+   
+    $interest = new Interest();
+    $interest->setQuestion($this->question);
+    $interest->setUser($user);
+    $interest->save();
+  }
 }
 
