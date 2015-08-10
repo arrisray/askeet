@@ -9,8 +9,8 @@
     <h2><?php echo link_to($question->getTitle(), 'question/show?stripped_title='.$question->getStrippedTitle()) ?></h2>
  
     <div class="question_body">
-      <div>asked by <?php echo link_to($question->getUser(), 'user/show?id='.$question->getUser()->getId()) ?> on <?php echo format_date($question->getCreatedAt(), 'f') ?></div>
-      <?php echo truncate_text($question->getBody(), 200) ?>
+      <div>asked by <?php echo link_to($question->getUser(), 'user/show?nickname='.$question->getUser()->getNickname()) ?> on <?php echo format_date($question->getCreatedAt(), 'f') ?></div>
+      <?php echo truncate_text($question->getHtmlBody(), 200) ?>
     </div>
   </div>
 <?php endforeach; ?>

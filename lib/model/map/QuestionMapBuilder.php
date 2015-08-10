@@ -47,6 +47,8 @@ class QuestionMapBuilder {
 		$tMap->addColumn('INTERESTED_USERS', 'InterestedUsers', 'int', CreoleTypes::INTEGER, false);
 
 		$tMap->addColumn('STRIPPED_TITLE', 'StrippedTitle', 'string', CreoleTypes::VARCHAR, false, 255);
+
+		$tMap->addColumn('HTML_BODY', 'HtmlBody', 'string', CreoleTypes::LONGVARCHAR, false);
 				
     } 
 } 

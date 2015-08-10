@@ -100,7 +100,7 @@ class userActions extends sfActions
 
   public function executeShow()
   {
-    $this->subscriber = UserPeer::retrieveByPk($this->getRequestParameter('id', $this->getUser()->getSubscriberId()));
+    $this->subscriber = UserPeer::retrieveByNickname($this->getRequestParameter('nickname'));
     $this->forward404Unless($this->subscriber);
    
     $this->interests = $this->subscriber->getInterestsJoinQuestion();

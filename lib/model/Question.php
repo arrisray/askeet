@@ -15,4 +15,16 @@ class Question extends BaseQuestion
    
     $this->setStrippedTitle(myTools::stripText($v));
   }
+
+  public function setBody( $v )
+  {
+    parent::setBody($v);
+ 
+    require_once('markdown.php');
+   
+    // strip all HTML tags
+    $v = htmlentities($v, ENT_QUOTES, 'UTF-8');
+   
+    $this->setHtmlBody(markdown($v));
+  }
 }
